@@ -67,7 +67,7 @@ public class Rocket : MonoBehaviour
         m_audio.PlayOneShot(deathSound);
         engineParticles.Stop();
         deathParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        Invoke("RestartLevel", levelLoadDelay);
     }
 
     private void StartSuccessSoundSequence()
@@ -93,6 +93,11 @@ public class Rocket : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     private void RespondToRotateInput()
     {
         if (Input.GetKey(KeyCode.A))
@@ -114,7 +119,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space)) { ApplyThrust(); }
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) { ApplyThrust(); }
         else { StopApplyingThrust(); }
     }
 
