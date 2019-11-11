@@ -7,7 +7,7 @@ public class Oscillator : MonoBehaviour
     [Range(0, 1)] [SerializeField] float movementFactor;
 
     Vector3 startingPos;
-    float period = 2f;
+    [SerializeField] float period = 2f;
     const float tau = Mathf.PI * 2;
 
     private void Start()
