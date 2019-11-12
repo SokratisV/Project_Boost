@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &174607791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174607792}
+  - component: {fileID: 174607793}
+  m_Layer: 9
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174607792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174607791}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4441167799960299778}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!108 &174607793
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174607791}
+  m_Enabled: 0
+  serializedVersion: 9
+  m_Type: 0
+  m_Color: {r: 0, g: 0.015101613, b: 0.990566, a: 1}
+  m_Intensity: 200
+  m_Range: 22
+  m_SpotAngle: 42.1
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 15
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &760868793452520953
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +103,7 @@ GameObject:
   - component: {fileID: 235575897073944507}
   - component: {fileID: 1343827937557517900}
   - component: {fileID: 956004159715256315}
+  - component: {fileID: 654520179}
   m_Layer: 9
   m_Name: Ship Head
   m_TagString: Untagged
@@ -31,6 +123,7 @@ Transform:
   m_LocalScale: {x: 0.31693, y: 0.31693, z: 0.31693}
   m_Children:
   - {fileID: 4160335045827613261}
+  - {fileID: 174607792}
   m_Father: {fileID: 3527190989660653581}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0427cf339e5891468d5f2b433b2d44a, type: 2}
+  - {fileID: 2100000, guid: 15d8cf7aa5e4f1d41abef45f346476be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,6 +185,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &654520179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760868793452520953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff5b374f567cb249878e7767a032291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.025
+  incrementAmount: 0.02
 --- !u!1 &893078356724110250
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +211,7 @@ GameObject:
   - component: {fileID: 739611236}
   - component: {fileID: 739611238}
   - component: {fileID: 5073129107440180741}
+  - component: {fileID: 1474479010}
   m_Layer: 9
   m_Name: Space Ship
   m_TagString: Player
@@ -162,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotThrust: 200
   upThrust: 1500
-  levelLoadDelay: 1
+  levelLoadDelay: 1.5
   engineSound: {fileID: 8300000, guid: b5db504ff29afa445b97b6e285885faa, type: 3}
   successSound: {fileID: 8300000, guid: 2900604e339092f41b81ce33b3e2464a, type: 3}
   deathSound: {fileID: 8300000, guid: 313e9938c17be5d42abe7346d4e9cb6d, type: 3}
@@ -265,6 +373,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1474479010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893078356724110250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dc794e1049db5488ece6a698a476a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1178070489618856285
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +427,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 1, g: 0.468404, b: 0.042452812, a: 1}
-  m_Intensity: 5
+  m_Intensity: 4
   m_Range: 6
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -368,6 +488,7 @@ GameObject:
   - component: {fileID: 5672534678766950473}
   - component: {fileID: 8906218210244544682}
   - component: {fileID: 6966321666169056169}
+  - component: {fileID: 142027652}
   m_Layer: 9
   m_Name: Thruster 1
   m_TagString: Untagged
@@ -415,7 +536,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e20a9a67a80ee2e4d9ad828c8e81183b, type: 2}
+  - {fileID: 2100000, guid: 97015bbaa4ac8034b80c55040ad4de52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -448,6 +569,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &142027652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780725628950102331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff5b374f567cb249878e7767a032291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.025
+  incrementAmount: 0.02
 --- !u!1 &4877587144830815349
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +595,7 @@ GameObject:
   - component: {fileID: 2010888974695694194}
   - component: {fileID: 806741534782094686}
   - component: {fileID: 1542630942400052379}
+  - component: {fileID: 1069235598}
   m_Layer: 9
   m_Name: Ship Body
   m_TagString: Untagged
@@ -506,7 +642,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5c4a56dac8ab4e4999d9481c82720f1, type: 2}
+  - {fileID: 2100000, guid: ec78d02ab899b2340a769241f69bbe6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -540,6 +676,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1069235598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877587144830815349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff5b374f567cb249878e7767a032291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.025
+  incrementAmount: 0.02
 --- !u!1 &6024794155084808755
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +732,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.015617137, g: 0, b: 0.8490566, a: 1}
-  m_Intensity: 4
+  m_Intensity: 5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -643,6 +793,7 @@ GameObject:
   - component: {fileID: 2971275459314095390}
   - component: {fileID: 3699841402302082893}
   - component: {fileID: 6102507190129979929}
+  - component: {fileID: 1057460396}
   m_Layer: 9
   m_Name: Thruster 2
   m_TagString: Untagged
@@ -690,7 +841,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e20a9a67a80ee2e4d9ad828c8e81183b, type: 2}
+  - {fileID: 2100000, guid: 97015bbaa4ac8034b80c55040ad4de52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -723,6 +874,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1057460396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6720570223473928344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff5b374f567cb249878e7767a032291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.025
+  incrementAmount: 0.02
 --- !u!1 &8348042295638527550
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +930,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 1, g: 0.468404, b: 0.042452812, a: 1}
-  m_Intensity: 5
+  m_Intensity: 4
   m_Range: 6
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -948,15 +1113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
---- !u!198 &7683606279477124853 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7521447992091725877}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7525038129176370991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4436899185823514, guid: ab79a37535b979f48b6de56e3a0a5cb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7521447992091725877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7683606279477124853 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0,
     type: 3}
   m_PrefabInstance: {fileID: 7521447992091725877}
   m_PrefabAsset: {fileID: 0}
