@@ -42,7 +42,7 @@ Material:
     - Vector1_5227F620: 1
     - Vector1_71F17E60: 0
     - Vector1_9EF33D9D: 0.7
-    - _Effect: 0
+    - _Effect: 0.005
     - _effect: 0
     m_Colors:
     - Color_4EE44CB0: {r: 0, g: 0.1021204, b: 20.46655, a: 0}
@@ -50,4 +50,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Hue: {r: 0, g: 0, b: 0, a: 0}
     - _color: {r: 0.8385342, g: 0.7877358, b: 1, a: 1}
-    - _edgeColor: {r: 0, g: 16.94838, b: 2.662049, a: 1}
+    - _edgeColor: {r: 16.94838, g: 0.000002592852, b: 0, a: 1}

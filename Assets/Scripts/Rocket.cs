@@ -12,6 +12,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] float rotThrust = default, upThrust = default, levelLoadDelay = default;
     [SerializeField] AudioClip engineSound = default, successSound = default, deathSound = default;
     [SerializeField] ParticleSystem engineParticles = default, successParticles = default, deathParticles = default;
+    [SerializeField] GameObject[] lights = default;
 
     void Start()
     {
@@ -52,17 +53,21 @@ public class Rocket : MonoBehaviour
             case "Friendly":
                 break;
             case "Finish":
-                StartSuccessSoundSequence();
+                StartSuccessSequence();
                 break;
             default:
-                StartDeathSoundSequence();
+                StartDeathSequence();
                 break;
         }
     }
 
-    private void StartDeathSoundSequence()
+    private void StartDeathSequence()
     {
         isTransitioning = true;
+        foreach (var light in lights)
+        {
+            light.SetActive(false);
+        }
         m_audio.Stop();
         m_audio.PlayOneShot(deathSound);
         engineParticles.Stop();
@@ -70,9 +75,13 @@ public class Rocket : MonoBehaviour
         Invoke("RestartLevel", levelLoadDelay);
     }
 
-    private void StartSuccessSoundSequence()
+    private void StartSuccessSequence()
     {
         isTransitioning = true;
+        foreach (var light in lights)
+        {
+            light.SetActive(false);
+        }
         m_audio.Stop();
         m_audio.PlayOneShot(successSound);
         successParticles.Play();
