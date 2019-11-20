@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] float rotThrust = default, upThrust = default, levelLoadDelay = default;
     [SerializeField] AudioClip engineSound = default, successSound = default, deathSound = default;
-    [SerializeField] ParticleSystem engineParticles = default, successParticles = default, deathParticles = default;
+    [SerializeField] ParticleSystem engineParticles1 = default, engineParticles2 = default, successParticles = default, deathParticles = default;
     [SerializeField] GameObject[] lights = default;
 
     void Start()
@@ -70,9 +70,24 @@ public class Rocket : MonoBehaviour
         }
         m_audio.Stop();
         m_audio.PlayOneShot(deathSound);
-        engineParticles.Stop();
+        ToggleEngine(false);
         deathParticles.Play();
         Invoke("RestartLevel", levelLoadDelay);
+    }
+
+    private void ToggleEngine(bool toggle)
+    {
+        if (toggle)
+        {
+            engineParticles1.Play();
+            engineParticles2.Play();
+        }
+        else
+        {
+            engineParticles1.Stop();
+            engineParticles2.Stop();
+        }
+
     }
 
     private void StartSuccessSequence()
@@ -135,7 +150,7 @@ public class Rocket : MonoBehaviour
     private void StopApplyingThrust()
     {
         m_audio.Stop();
-        engineParticles.Stop();
+        ToggleEngine(false);
     }
 
     private void ApplyThrust()
@@ -143,6 +158,6 @@ public class Rocket : MonoBehaviour
         thrustThisFrame = upThrust * Time.deltaTime;
         m_rigidbody.AddRelativeForce(Vector3.up * thrustThisFrame);
         if (!m_audio.isPlaying) { m_audio.PlayOneShot(engineSound); }
-        engineParticles.Play();
+        ToggleEngine(true);
     }
 }
