@@ -10,6 +10,7 @@ public class ControlDissolve : MonoBehaviour
             foreach (var item in transform.GetComponentsInChildren<Dissolve>())
             {
                 item.StartDissolving(Dissolve.Colors.Green);
+                print("Dissolving");
             }
         }
         else
@@ -17,6 +18,7 @@ public class ControlDissolve : MonoBehaviour
             foreach (var item in transform.GetComponentsInChildren<Dissolve>())
             {
                 item.StartDissolving(Dissolve.Colors.Red);
+                print("Dissolving");
             }
         }
     }

@@ -20,16 +20,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_384F0F37:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 77583f99dea53b641804bb357092ec83, type: 3}
+        m_Texture: {fileID: 2800000, guid: 837e5a237c4c50449a73ecf5a5092be5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: 40da0395b61db4448b98bab66d6b549c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 3b0b7c1f4ac9f6b499e27cf84e722ff4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 394911b3cbeafb541a398da2dd7bdee5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
@@ -37,12 +45,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_30B22703: 30
-    - Vector1_32CC0EE0: 0.02
+    - Vector1_2D82BF59: 0.22
+    - Vector1_30B22703: 69
+    - Vector1_32CC0EE0: 0.0204
     - Vector1_5227F620: 1
+    - Vector1_6749618B: 1
     - Vector1_71F17E60: 0
-    - Vector1_9EF33D9D: 0.7
-    - _Effect: 0.005
+    - Vector1_9EF33D9D: 0.382
+    - _Effect: 0
     - _effect: 0
     m_Colors:
     - Color_4EE44CB0: {r: 0, g: 0.1021204, b: 20.46655, a: 0}

@@ -11,10 +11,11 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] float rotThrust = default, upThrust = default, levelLoadDelay = default;
     [SerializeField] AudioClip engineSound = default, successSound = default, deathSound = default;
-    [SerializeField] ParticleSystem engineParticles1 = default, engineParticles2 = default, successParticles = default, deathParticles = default;
+    [SerializeField] ParticleSystem successParticles = default, deathParticles = default;
+    [SerializeField] ParticleSystem[] engineParticles = default;
     [SerializeField] GameObject[] lights = default;
 
-    void Start()
+    void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
         m_audio = GetComponent<AudioSource>();
@@ -79,13 +80,17 @@ public class Rocket : MonoBehaviour
     {
         if (toggle)
         {
-            engineParticles1.Play();
-            engineParticles2.Play();
+            foreach (var engine in engineParticles)
+            {
+                engine.Play();
+            }
         }
         else
         {
-            engineParticles1.Stop();
-            engineParticles2.Stop();
+            foreach (var engine in engineParticles)
+            {
+                engine.Stop();
+            }
         }
 
     }
