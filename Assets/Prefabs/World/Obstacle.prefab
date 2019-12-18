@@ -106,9 +106,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb1ff8f07f46ac44997262373585dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 0, z: 0}
-  movementFactor: 0
-  period: 2
+  rotationSpeed: 5
+  translationSpeed: 1
+  shouldRotate: 0
+  shouldMove: 0
+  rotateLocal: 0
+  moveLocal: 0
+  rotateX: 0
+  rotateY: 0
+  rotateZ: 0
+  translateX: 0
+  translateY: 0
+  translateZ: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.49528503
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.50471497
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
 --- !u!64 &2552150952069579707
 MeshCollider:
   m_ObjectHideFlags: 0
