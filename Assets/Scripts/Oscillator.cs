@@ -8,21 +8,28 @@ public class Oscillator : MonoBehaviour
     // [SerializeField] Vector3 movementVector = new Vector3(10f, 10f, 10f);
     // [Range(0, 1)] [SerializeField] float movementFactor;
     // [SerializeField] float period = 2f;
-    [SerializeField] float rotationSpeed = 5f, translationSpeed = 1f;
-    [SerializeField]
-    bool shouldRotate = true, shouldMove = true,
-        rotateLocal = false, moveLocal = false,
-        rotateX = false, rotateY = true, rotateZ = false,
-        translateX = false, translateY = true, translateZ = false;
-    [SerializeField] AnimationCurve curve;
-
-    Vector3 startingPos;
-    const float tau = Mathf.PI * 2;
+    // Vector3 startingPos;
     float deltaTime;
+    [Header("Translation Settings")]
+    [SerializeField] float translationSpeed = 1;
+    [SerializeField] float translationOffsetX = 1;
+    [SerializeField] float translationOffsetY = 1;
+    [SerializeField] float translationOffsetZ = 1;
+    [SerializeField]
+    bool shouldTranslate = true, translateLocal = false,
+        translateX = false, translateY = true, translateZ = false;
+
+    [Header("Rotation Settings")]
+    [SerializeField] float rotationSpeed = 5f;
+    [SerializeField] AnimationCurve curve;
+    [SerializeField]
+    bool shouldRotate = true, rotateLocal = false,
+        rotateX = false, rotateY = true, rotateZ = false;
+    // const float tau = Mathf.PI * 2;
 
     private void Start()
     {
-        startingPos = transform.position;
+        // startingPos = transform.position;
     }
 
     private void Update()
@@ -34,10 +41,10 @@ public class Oscillator : MonoBehaviour
 
     private void Move()
     {
-        if (!shouldMove) return;
+        if (!shouldTranslate) return;
         float v = curve.Evaluate(Time.time);
         Vector3 translation = GetTranslationVector(v) * translationSpeed;
-        if (moveLocal)
+        if (translateLocal)
         {
             transform.Translate(translation, Space.Self);
         }
@@ -49,9 +56,9 @@ public class Oscillator : MonoBehaviour
 
     private Vector3 GetTranslationVector(float v)
     {
-        return new Vector3(v * deltaTime * ActivateAxis(translateX),
-            v * deltaTime * ActivateAxis(translateY),
-            v * deltaTime * ActivateAxis(translateZ));
+        return new Vector3(translationOffsetX * ActivateAxis(translateX),
+            translationOffsetY * ActivateAxis(translateY),
+            translationOffsetZ * ActivateAxis(translateZ)) * deltaTime * v;
     }
 
     private void Rotate()
