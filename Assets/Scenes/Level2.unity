@@ -148,17 +148,17 @@ PrefabInstance:
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8
+      value: 2.42
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.3
+      value: 7.16
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.54
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
@@ -561,17 +561,17 @@ PrefabInstance:
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.09
+      value: 8.59
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.61
+      value: 7.26
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.14
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
@@ -677,6 +677,26 @@ PrefabInstance:
         type: 3}
       propertyPath: translationOffsetX
       value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: -0.50943756
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].value
+      value: 0.49998474
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].time
+      value: 0.0041656494
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597b384477c4874488798407d8bc78c4, type: 3}

@@ -13,7 +13,6 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip engineSound = default, successSound = default, deathSound = default;
     [SerializeField] ParticleSystem successParticles = default, deathParticles = default;
     [SerializeField] ParticleSystem[] engineParticles = default;
-    [SerializeField] GameObject[] lights = default;
 
     void Awake()
     {
@@ -62,18 +61,45 @@ public class Rocket : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isTransitioning || !collisionsEnabled) return;
+
+        switch (other.gameObject.tag)
+        {
+            default:
+                StartDeathSequence();
+                break;
+        }
+    }
+
     private void StartDeathSequence()
     {
         isTransitioning = true;
-        foreach (var light in lights)
-        {
-            light.SetActive(false);
-        }
+        StartDissolving(true);
         m_audio.Stop();
         m_audio.PlayOneShot(deathSound);
         ToggleEngine(false);
         deathParticles.Play();
         Invoke("RestartLevel", levelLoadDelay);
+    }
+
+    private void StartDissolving(bool collidedWithEnemy)
+    {
+        if (collidedWithEnemy)
+        {
+            foreach (var item in transform.GetComponentsInChildren<Dissolve>())
+            {
+                item.StartDissolving(Dissolve.Colors.Red);
+            }
+        }
+        else
+        {
+            foreach (var item in transform.GetComponentsInChildren<Dissolve>())
+            {
+                item.StartDissolving(Dissolve.Colors.Green);
+            }
+        }
     }
 
     private void ToggleEngine(bool toggle)
@@ -98,10 +124,7 @@ public class Rocket : MonoBehaviour
     private void StartSuccessSequence()
     {
         isTransitioning = true;
-        foreach (var light in lights)
-        {
-            light.SetActive(false);
-        }
+        StartDissolving(false);
         m_audio.Stop();
         m_audio.PlayOneShot(successSound);
         successParticles.Play();
@@ -115,11 +138,6 @@ public class Rocket : MonoBehaviour
 
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings) { nextSceneIndex = 0; }
         SceneManager.LoadScene(nextSceneIndex);
-    }
-
-    private void LoadFirstLevel()
-    {
-        SceneManager.LoadScene(0);
     }
 
     private void RestartLevel()
