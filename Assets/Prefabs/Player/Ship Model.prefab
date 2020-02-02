@@ -101,14 +101,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1083867677780656976}
     m_Modifications:
-    - target: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
-      propertyPath: m_Name
-      value: FlameStream
-      objectReference: {fileID: 0}
     - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
         type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421077076039884, guid: bccc7a794e75b2a44a4b0dac69160b7b,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
+      propertyPath: m_Name
+      value: FlameStream
       objectReference: {fileID: 0}
     - target: {fileID: 4317874184272834, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_LocalPosition.x

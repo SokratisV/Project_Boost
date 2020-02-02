@@ -3,30 +3,32 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-    private bool isTransitioning = false;
-    private Rigidbody m_rigidbody;
-    private AudioSource m_audio;
-    private float thrustThisFrame;
-    private bool collisionsEnabled = true;
+    private bool _isTransitioning;
+    private Rigidbody _rigidbody;
+    private AudioSource _audio;
+    private float _thrustThisFrame;
+    private bool _collisionsEnabled = true;
 
-    [SerializeField] float rotThrust = default, upThrust = default, levelLoadDelay = default;
-    [SerializeField] AudioClip engineSound = default, successSound = default, deathSound = default;
-    [SerializeField] ParticleSystem successParticles = default, deathParticles = default;
-    [SerializeField] ParticleSystem[] engineParticles = default;
-    [SerializeField] GameObject[] lights = default;
+    [SerializeField] float rotThrust, upThrust, levelLoadDelay;
+    [SerializeField] AudioClip engineSound, successSound, deathSound;
+    [SerializeField] ParticleSystem successParticles, deathParticles;
+    [SerializeField] ParticleSystem[] engineParticles;
+    [SerializeField] GameObject[] lights;
 
     void Awake()
     {
-        m_rigidbody = GetComponent<Rigidbody>();
-        m_audio = GetComponent<AudioSource>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _audio = GetComponent<AudioSource>();
     }
+
     void Update()
     {
-        if (!isTransitioning)
+        if (!_isTransitioning)
         {
             RespondToThrustInput();
             RespondToRotateInput();
         }
+
         if (Debug.isDebugBuild)
         {
             RespondToDebugKeys();
@@ -41,13 +43,13 @@ public class Rocket : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            collisionsEnabled = !collisionsEnabled;
+            _collisionsEnabled = !_collisionsEnabled;
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning || !collisionsEnabled) return;
+        if (_isTransitioning || !_collisionsEnabled) return;
 
         switch (other.gameObject.tag)
         {
@@ -64,16 +66,17 @@ public class Rocket : MonoBehaviour
 
     private void StartDeathSequence()
     {
-        isTransitioning = true;
+        _isTransitioning = true;
         foreach (var light in lights)
         {
             light.SetActive(false);
         }
-        m_audio.Stop();
-        m_audio.PlayOneShot(deathSound);
+
+        _audio.Stop();
+        _audio.PlayOneShot(deathSound);
         ToggleEngine(false);
         deathParticles.Play();
-        Invoke("RestartLevel", levelLoadDelay);
+        Invoke(nameof(RestartLevel), levelLoadDelay);
     }
 
     private void ToggleEngine(bool toggle)
@@ -92,34 +95,34 @@ public class Rocket : MonoBehaviour
                 engine.Stop();
             }
         }
-
     }
 
     private void StartSuccessSequence()
     {
-        isTransitioning = true;
+        _isTransitioning = true;
         foreach (var light in lights)
         {
             light.SetActive(false);
         }
-        m_audio.Stop();
-        m_audio.PlayOneShot(successSound);
+
+        _audio.Stop();
+        _audio.PlayOneShot(successSound);
         successParticles.Play();
-        Invoke("LoadNextScene", levelLoadDelay);
+        Invoke(nameof(LoadNextScene), levelLoadDelay);
     }
 
     private void LoadNextScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings ? 0 : ++currentSceneIndex);
+        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        var nextSceneIndex =
+            (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings ? 0 : ++currentSceneIndex);
 
-        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings) { nextSceneIndex = 0; }
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
         SceneManager.LoadScene(nextSceneIndex);
-    }
-
-    private void LoadFirstLevel()
-    {
-        SceneManager.LoadScene(0);
     }
 
     private void RestartLevel()
@@ -129,11 +132,11 @@ public class Rocket : MonoBehaviour
 
     private void RespondToRotateInput()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             RotateManually(Time.deltaTime * rotThrust);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             RotateManually(-Time.deltaTime * rotThrust);
         }
@@ -141,28 +144,38 @@ public class Rocket : MonoBehaviour
 
     private void RotateManually(float rotationThisFrame)
     {
-        m_rigidbody.freezeRotation = true;
+        _rigidbody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame);
-        m_rigidbody.freezeRotation = false;
+        _rigidbody.freezeRotation = false;
     }
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) { ApplyThrust(); }
-        else { StopApplyingThrust(); }
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            ApplyThrust();
+        }
+        else
+        {
+            StopApplyingThrust();
+        }
     }
 
     private void StopApplyingThrust()
     {
-        m_audio.Stop();
+        _audio.Stop();
         ToggleEngine(false);
     }
 
     private void ApplyThrust()
     {
-        thrustThisFrame = upThrust * Time.deltaTime;
-        m_rigidbody.AddRelativeForce(Vector3.up * thrustThisFrame);
-        if (!m_audio.isPlaying) { m_audio.PlayOneShot(engineSound); }
+        _thrustThisFrame = upThrust * Time.deltaTime;
+        _rigidbody.AddRelativeForce(Vector3.up * _thrustThisFrame);
+        if (!_audio.isPlaying)
+        {
+            _audio.PlayOneShot(engineSound);
+        }
+
         ToggleEngine(true);
     }
 }

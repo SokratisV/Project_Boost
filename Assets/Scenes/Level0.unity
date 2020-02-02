@@ -72,7 +72,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 1
-    m_BakeBackend: 2
+    m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 64
     m_PVRSampleCount: 512
@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.548
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 112000000, guid: 8c480778f0d705240aa311c6876259dd,
     type: 2}
   m_UseShadowmask: 0
@@ -244,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 7168229035339237839, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 7168229035339237839, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
@@ -450,23 +450,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
-      propertyPath: movementFactor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
-        type: 3}
-      propertyPath: movementVector.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
-        type: 3}
       propertyPath: movementVector.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6282990842296409100, guid: 597b384477c4874488798407d8bc78c4,
-        type: 3}
-      propertyPath: period
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597b384477c4874488798407d8bc78c4, type: 3}
@@ -539,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 7168229035339237839, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8310557859277450443, guid: 597b384477c4874488798407d8bc78c4,
         type: 3}
